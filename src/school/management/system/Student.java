@@ -34,8 +34,9 @@ public class Student {
      * Keep adding the fees to feesPaid field.
      * @param fees the fees that the student pays.
      */
-    public void updateFeesPaid(int fees) {
+    public void payFees(int fees) {
         feesPaid += fees;
+        School.updateTotalMoneyEarned(feesPaid);
     }
 
     //return id of the student
@@ -65,5 +66,19 @@ public class Student {
     //return the total fees of the student
     public int getFeesTotal() {
         return feesTotal;
+    }
+
+
+    /**
+     *
+     * @return the remaining fees.
+     */
+    public int getRemainingFees() {
+        return feesTotal - feesPaid;
+    }
+
+    @Override
+    public String toString() {
+        return "Student's name: " + name + " | Total fees paid: " + feesPaid;
     }
 }
